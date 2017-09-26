@@ -45,7 +45,7 @@ xd2(7) = 0;
 
 %% set simuation time
 timestep = 0.01;
-td = 20;
+td = 10;
 t = 0:timestep:td;
 t0 = 0;
 

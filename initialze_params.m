@@ -25,9 +25,9 @@ I = diag([Ixx Iyy Izz]); % inertia matrix\
 omegaMax = 8976;
 omegaMin = 1376;
 
-h=0.03;
-Kr=0;
-Kparas = 0;
+h = 0.03;
+Kr = 1e-03;
+Kparas = 1e-03;
 noise_rate=0;
 
 

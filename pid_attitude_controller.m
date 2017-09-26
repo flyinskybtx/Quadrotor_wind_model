@@ -28,7 +28,7 @@ acc_error = gamma .* acc_error + error;
 %% calulate attitude PD control signal
 U = zeros(4,1);    % The control vector
 % use U(1) to complement Z error,
-U(1) = (m * g + m * [KpZ KdZ] * error(5:6)) / (cos(phi) * cos(theta)) + KiZ * acc_error(5);
+U(1) = (m * g + m * [KpZ KdZ] * error(5:6) + KiZ * acc_error(5)) / (cos(phi) * cos(theta));
 U(2) = Ixx * [KpPhi KdPhi] * error(7:8) +  KiPhi * acc_error(7);
 U(3) = Iyy * [KpTheta KdTheta] * error(9:10) + KiTheta * acc_error(9);
 U(4) = Izz * [KpPsi KdPsi] * error(11:12) + KiPsi * acc_error(11);
@@ -45,7 +45,6 @@ for j = 2:4
 end
 
 %% translate into omega
-omega = zeros(4,1);
 omega_square = allocation_matrix * U;
 omega =  sqrt(omega_square);
 

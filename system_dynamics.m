@@ -1,11 +1,12 @@
-function [ xdot ] = system_dynamics( x,omega,wind,t )
+function [ xdot ] = system_dynamics( x,omega,wind )
 %UNTITLED4 此处显示有关此函数的摘要
 %   x, omega
 global Ixx Iyy Izz Jtp ct cq l m g h Kr Kparas I omegaMax omegaMin
-
 digits(6);
 
-
+if nargin == 2
+    wind = zeros(3,1);
+end
 %% regulate state and control input
 if x(5) < 0 % no lower than ground, if hit ground reinitialize;
     x(:,:) =0;
